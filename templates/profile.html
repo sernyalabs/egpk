@@ -1,0 +1,44 @@
+<!-- File: templates/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Profile</h1>
+
+    <!-- Display current profile details -->
+    <div class="profile-view">
+        <h2>Profile Information</h2>
+        <p><strong>First Name:</strong> {{ user_data['first_name'] }}</p>
+        <p><strong>Last Name:</strong> {{ user_data['last_name'] }}</p>
+        <p><strong>Phone Number:</strong> {{ user_data['phone_number'] }}</p>
+        <p><strong>Email:</strong> {{ user_data['email'] }}</p>
+        <p><strong>Username:</strong> {{ user_data['username'] }}</p>
+        <p><strong>Job Role:</strong> {{ user_data['job_role'] }}</p>
+    </div>
+
+    <!-- Form to update username and password -->
+    <form method="POST">
+        <h2>Update Profile</h2>
+        
+        <!-- Username input (editable) -->
+        <label for="username">New Username:</label>
+        <input type="text" name="username" id="username" value="{{ user_data['username'] }}" required>
+        <br><br>
+
+        <!-- Password input (editable) -->
+        <label for="password">New Password (optional):</label>
+        <input type="password" name="password" id="password">
+        <br><br>
+
+        <button type="submit">Update Profile</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

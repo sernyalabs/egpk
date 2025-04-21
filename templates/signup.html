@@ -1,0 +1,36 @@
+<!-- templates/signup.html -->
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<form method="POST">
+    <label>First Name:</label>
+    <input type="text" name="first_name" required><br>
+  
+    <label>Last Name:</label>
+    <input type="text" name="last_name" required><br>
+  
+    <label>Phone Number:</label>
+    <input type="tel" name="phone_number" required><br>
+  
+    <label>Email Address:</label>
+    <input type="email" name="email" required><br>
+  
+    <label>Username:</label>
+    <input type="text" name="username" required><br>
+  
+    <label>Password:</label>
+    <input type="password" name="password" required><br>
+  
+    <label>Job Role:</label>
+    <select name="job_role" required>
+      <option value="">Select a role</option>
+      <option value="Admin">Admin</option>
+      <option value="Manager">Manager</option>
+      <option value="Staff">Staff</option>
+      <option value="Technician">Technician</option>
+    </select><br>
+  
+    <button type="submit">Sign Up</button>
+  </form>
+  
