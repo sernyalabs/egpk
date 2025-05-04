@@ -29,10 +29,18 @@
     <!-- Grievances Page Content -->
     <div class="grievance-buttons">
         <a href="{{ url_for('new_grievance') }}" class="action-btn">New Grievance</a>
+        <br>
         <a href="{{ url_for('my_grievances') }}" class="action-btn">My Grievances</a>
-        <a href="{{ url_for('home') }}" class="back-home-btn">Back</a>
+        <br>
     </div>
-
+            <!-- Back to Home Button -->
+            <div class="center-button-container">
+                <form action="{{ url_for('home') }}" method="get">
+                    <button type="submit" class="back-home-btn">Back to Home</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Menu Toggle Script -->
     <script>
         function toggleMenu() {

@@ -31,8 +31,9 @@
                 <label for="description">Description:</label>
                 <input type="text" name="description" id="description" required>
             </div>
-
-            <button type="submit" class="update-btn">Submit Grievance</button>
+            <div class="center-button-container" style="margin-top: 30px;">
+                <a href="{{ url_for('new_grievance') }}" class="update-btn">Submit New Grievance</a>
+            </div>
         </form>
 
         <div class="center-button-container" style="margin-top: 30px;">
