@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Grievances - eGPK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - 53-Ralong Namlung eGPK</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- External CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
@@ -26,24 +26,19 @@
         </div>
     </div>
 
-    <!-- Content -->
-    <div class="content">
-        <h1>53-Ralong Namlung eGPK</h1>
-        <p>Welcome, {{ username }},this is the homepage under construction for 53-Ralong Namlung eGPK!</p>
+    <!-- Grievances Page Content -->
+    <div class="grievance-buttons">
+        <a href="{{ url_for('new_grievance') }}" class="action-btn">New Grievance</a>
+        <a href="{{ url_for('my_grievances') }}" class="action-btn">My Grievances</a>
+        <a href="{{ url_for('home') }}" class="back-home-btn">Back</a>
     </div>
 
-    <!-- Back to Home Button -->
-    <div class="center-button-container">
-        <a href="{{ url_for('home') }}" class="back-home-btn">Back to Home</a>
-    </div>
-
-    <!-- Small JavaScript for Menu Toggle on Mobile -->
+    <!-- Menu Toggle Script -->
     <script>
         function toggleMenu() {
-            var nav = document.getElementById('navLinks');
+            const nav = document.getElementById('navLinks');
             nav.classList.toggle('show');
         }
     </script>
-
 </body>
 </html>

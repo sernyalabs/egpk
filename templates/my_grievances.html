@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Grievances - eGPK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">eGPK</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('grievances') }}">Grievances</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="grievances-container">
+        <h1>My Grievances</h1>
+
+        {% if grievances %}
+            <ul>
+                {% for grievance in grievances %}
+                    <li>
+                        <strong>{{ grievance.title }}</strong><br>
+                        <p>{{ grievance.description }}</p>
+                        <p>Status: {{ grievance.status }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No grievances submitted yet.</p>
+        {% endif %}
+
+        <div class="center-button-container" style="margin-top: 30px;">
+            <a href="{{ url_for('new_grievance') }}" class="update-btn">Submit New Grievance</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

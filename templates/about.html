@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - eGPK</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">eGPK</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('grievances') }}">Grievances</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <!-- About Content -->
+    <div class="about-container">
+        <h2>About eGPK</h2>
+        <p><strong>eGPK</strong> (e-Grievance and Public Karya Portal) is a digital initiative aimed at streamlining public grievances and community development tracking for 53-Ralong Namlung. Our goal is to create a transparent, accountable, and accessible platform for citizens and administrators alike.</p>
+        <p>This platform allows users to submit grievances, monitor public projects, and stay updated on community affairs. Our vision is to empower rural administration with the tools of modern technology.</p>
+
+        <h2>Meet the Team</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member1.jpg') }}" alt="Member 1">
+                <h3>John Doe</h3>
+                <p>Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member2.jpg') }}" alt="Member 2">
+                <h3>Jane Smith</h3>
+                <p>UI/UX Designer</p>
+            </div>
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/member3.jpg') }}" alt="Member 3">
+                <h3>Alex Brown</h3>
+                <p>Project Coordinator</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="center-button-container">
+        <a href="{{ url_for('home') }}" class="back-home-btn">Back to Home</a>
+    </div>
+
+    <!-- Toggle Script -->
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('navLinks');
+            nav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

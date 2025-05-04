@@ -55,10 +55,10 @@ def signup():
     return render_template('signup.html')
 
 
-
 # Login route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None  # Initialize error variable
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -70,9 +70,10 @@ def login():
             session['username'] = username
             return redirect(url_for('home'))  # Redirect to home page after successful login
         else:
-            return "Invalid credentials, please try again."
+            error = "Invalid username or password"
 
-    return render_template('login.html')
+    return render_template('login.html', error=error)
+
 
 @app.route('/home')
 def home():
@@ -120,6 +121,63 @@ def profile():
 def logout():
     session.pop('username', None)  # Remove the username from the session
     return redirect(url_for('login'))  # Redirect to login page after logout
+
+# Dashboard route
+@app.route('/dashboard')
+def dashboard():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    return "<h1>Dashboard - Under Construction</h1>"
+
+##Grievances
+@app.route('/grievances')
+def grievances():
+    if 'username' not in session:
+        return redirect(url_for('login'))  # Redirect to login if not logged in
+    return render_template('grievances.html')  # or whatever the content is
+
+
+
+# About route
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+# Route to handle the submission of new grievances
+@app.route('/new_grievance', methods=['GET', 'POST'])
+def new_grievance():
+    if 'username' not in session:
+        return redirect(url_for('login'))  # Redirect to login if not logged in
+
+    if request.method == 'POST':
+        title = request.form['title']
+        description = request.form['description']
+        username = session['username']  # Get the logged-in user's username
+
+        # Insert the grievance into the database
+        response = supabase.table('grievances').insert([{
+            'title': title,
+            'description': description,
+            'username': username
+        }]).execute()
+
+        if response.data:
+            return redirect(url_for('my_grievances'))  # Redirect to the user's grievances page
+        else:
+            return f"Failed to submit grievance: {response.error_message}"
+
+    return render_template('new_grievance.html')  # Render the form to create a new grievance
+
+# Route to view the user's grievances
+@app.route('/my_grievances')
+def my_grievances():
+    if 'username' not in session:
+        return redirect(url_for('login'))  # Redirect to login if not logged in
+
+    # Fetch grievances from the database for the logged-in user
+    grievances_data = supabase.table('grievances').select('*').eq('username', session['username']).execute()
+
+    return render_template('my_grievances.html', grievances=grievances_data.data)  # Render with user's grievances
 
 if __name__ == '__main__':
     app.run(debug=True)

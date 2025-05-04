@@ -1,44 +1,99 @@
-<!-- File: templates/profile.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>User Profile - 53-Ralong Namlung eGPK</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>Profile</h1>
 
-    <!-- Display current profile details -->
-    <div class="profile-view">
-        <h2>Profile Information</h2>
-        <p><strong>First Name:</strong> {{ user_data['first_name'] }}</p>
-        <p><strong>Last Name:</strong> {{ user_data['last_name'] }}</p>
-        <p><strong>Phone Number:</strong> {{ user_data['phone_number'] }}</p>
-        <p><strong>Email:</strong> {{ user_data['email'] }}</p>
-        <p><strong>Username:</strong> {{ user_data['username'] }}</p>
-        <p><strong>Job Role:</strong> {{ user_data['job_role'] }}</p>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">eGPK</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('grievances') }}">Grievances</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
     </div>
 
-    <!-- Form to update username and password -->
-    <form method="POST">
-        <h2>Update Profile</h2>
-        
-        <!-- Username input (editable) -->
-        <label for="username">New Username:</label>
-        <input type="text" name="username" id="username" value="{{ user_data['username'] }}" required>
-        <br><br>
+    <!-- Content -->
+    <div class="content">
+        <div class="profile-container">
+            <h1>User Profile</h1>
 
-        <!-- Password input (editable) -->
-        <label for="password">New Password (optional):</label>
-        <input type="password" name="password" id="password">
-        <br><br>
+            <!-- Editable Profile Form -->
+            <form method="POST">
+                <div class="profile-form">
+                    <h2>Edit Profile Information</h2>
 
-        <button type="submit">Update Profile</button>
-    </form>
+                    <!-- Editable First Name -->
+                    <div class="form-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" id="first_name" value="{{ user_data['first_name'] }}" required>
+                    </div>
 
-    <br>
-    <a href="{{ url_for('home') }}">Back to Home</a>
+                    <!-- Editable Last Name -->
+                    <div class="form-group">
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" id="last_name" value="{{ user_data['last_name'] }}" required>
+                    </div>
+
+                    <!-- Editable Phone Number -->
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number:</label>
+                        <input type="text" name="phone_number" id="phone_number" value="{{ user_data['phone_number'] }}" required>
+                    </div>
+
+                    <!-- Editable Email -->
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" value="{{ user_data['email'] }}" required>
+                    </div>
+
+                    <!-- Editable Username -->
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" value="{{ user_data['username'] }}" required>
+                    </div>
+
+                    <!-- Editable Job Role -->
+                    <div class="form-group">
+                        <label for="job_role">Job Role:</label>
+                        <input type="text" name="job_role" id="job_role" value="{{ user_data['job_role'] }}" required>
+                    </div>
+
+                    <!-- Optional Password Change -->
+                    <div class="form-group">
+                        <label for="password">New Password (optional):</label>
+                        <input type="password" name="password" id="password">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="update-btn">Update Profile</button>
+                </div>
+            </form>
+
+            <!-- Back to Home Button -->
+            <div class="center-button-container">
+                <form action="{{ url_for('home') }}" method="get">
+                    <button type="submit" class="back-home-btn">Back to Home</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('navLinks');
+            nav.classList.toggle('show');
+        }
+    </script>
+
 </body>
 </html>
