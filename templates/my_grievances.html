@@ -40,6 +40,15 @@
         </div>
     </div>
 
+                <!-- Back to Home Button -->
+                <div class="center-button-container">
+                    <form action="{{ url_for('home') }}" method="get">
+                        <button type="submit" class="back-home-btn">Back to Home</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     <script>
         function toggleMenu() {
             const nav = document.getElementById('navLinks');

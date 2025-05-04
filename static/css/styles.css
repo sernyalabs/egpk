@@ -212,7 +212,7 @@ a:hover {
     display: flex;
     justify-content: center;  /* Centers the button horizontally */
     align-items: center;      /* Centers the button vertically */
-    height: 100vh;            /* Takes up the full viewport height */
+    height: 10vh;            /* Takes up the full viewport height */
 }
 
 /* === Profile Form Styles === */
