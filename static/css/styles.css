@@ -15,7 +15,6 @@ h1 {
     font-size: 36px;
 }
 
-/* LINKS */
 a {
     text-decoration: none;
     color: #3498db;
@@ -23,6 +22,98 @@ a {
 
 a:hover {
     color: #1abc9c;
+}
+
+/* === ALERTS === */
+.alert-box {
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 12px 20px;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* === NAVBAR === */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3498db;
+    padding: 10px 20px;
+    color: white;
+    flex-wrap: wrap;
+}
+
+.navbar .logo {
+    font-family: "Cal Sans", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #2980b9;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #3498db;
+        margin-top: 10px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .about-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .team-member {
+        flex-basis: 100%;
+    }
+
+    .back-home-btn {
+        font-size: 16px;
+    }
 }
 
 /* === ABOUT PAGE === */
@@ -95,127 +186,34 @@ a:hover {
     font-size: 16px;
 }
 
-/* === BACK BUTTON === */
+/* === CENTER BUTTON CONTAINER === */
+.center-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+/* === BACK BUTTON (Reusable) === */
 .back-home-btn {
     background-color: #1abc9c;
     color: white;
-    padding: 14px;
+    padding: 14px 30px;
+    font-size: 18px;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    display: block;
-    margin: 40px auto 0;
-    width: 200px;
 }
 
 .back-home-btn:hover {
     background-color: #16a085;
 }
 
-/* === ALERTS === */
-.alert-box {
-    background-color: #f8d7da;
-    color: #842029;
-    padding: 12px 20px;
-    border: 1px solid #f5c2c7;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-weight: bold;
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* === NEW: NAVBAR STYLES === */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #3498db;
-    padding: 10px 20px;
-    color: white;
-    flex-wrap: wrap;
-}
-
-.navbar .logo {
-    font-family: "Cal Sans", sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.nav-links {
-    display: flex;
-    gap: 15px;
-}
-
-.nav-links a {
-    color: white;
-    font-weight: 500;
-    padding: 8px 12px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.nav-links a:hover {
-    background-color: #2980b9;
-}
-
-/* === MOBILE MENU === */
-.menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-/* === RESPONSIVE DESIGN === */
-@media screen and (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: #3498db;
-        margin-top: 10px;
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-        color: white;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .about-container {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .team-member {
-        flex-basis: 100%;
-    }
-
-    .back-home-btn {
-        font-size: 16px;
-    }
-}
-
-/* === CENTER BUTTON CONTAINER === */
-.center-button-container {
-    display: flex;
-    justify-content: center;  /* Centers the button horizontally */
-    align-items: center;      /* Centers the button vertically */
-    height: 10vh;            /* Takes up the full viewport height */
-}
-
-/* === Profile Form Styles === */
+/* === PROFILE FORM === */
 .profile-container {
     max-width: 800px;
     margin: 50px auto;
@@ -268,21 +266,7 @@ a:hover {
     background-color: #2980b9;
 }
 
-/* === BACK TO HOME BUTTON === */
-.back-home-btn {
-    display: inline-flex; /* This allows centering */
-    justify-content: center; /* Centers the text horizontally */
-    align-items: center; /* Centers the text vertically */
-    padding: 14px 28px;
-    font-size: 18px;
-    background-color: #2980b9;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-/* Form Container Styles */
+/* === GRIEVANCE FORM === */
 .form-container {
     max-width: 500px;
     margin: 50px auto;
@@ -301,7 +285,7 @@ a:hover {
 .form-box {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 50px;
 }
 
 .form-group label {
@@ -334,7 +318,7 @@ a:hover {
     background-color: #2980b9;
 }
 
-/* Grievance Buttons */
+/* === GRIEVANCE BUTTONS === */
 .grievance-buttons {
     display: flex;
     justify-content: center;
@@ -358,21 +342,41 @@ a:hover {
 .action-btn:hover {
     background-color: #2980b9;
 }
-
-/* Back Button Styling */
-.back-home-btn {
-    background-color: #1abc9c;
-    color: white;
-    padding: 14px 30px;
-    border-radius: 5px;
-    font-size: 18px;
+.grievance-item {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: #fff;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
+    transition: background-color 0.3s;
 }
 
-.back-home-btn:hover {
-    background-color: #16a085;
+.grievance-item:hover {
+    background-color: #f9f9f9;
+}
+
+.grievance-description {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+.logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.egpk-logo {
+    width: 120px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: block;
 }

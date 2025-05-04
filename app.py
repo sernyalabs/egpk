@@ -32,7 +32,6 @@ def signup():
         phone_number = request.form['phone_number']
         email = request.form['email']
         username = request.form['username']
-        job_role = request.form['job_role']
         password = request.form['password']
         password_hash = generate_password_hash(password)
 
@@ -44,7 +43,6 @@ def signup():
             'email': email,
             'username': username,
             'password': password_hash,
-            'job_role': job_role
         }]).execute()
 
         if response.data:

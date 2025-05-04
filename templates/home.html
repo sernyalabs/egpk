@@ -26,11 +26,43 @@
         </div>
     </div>
 
-    <!-- Content -->
-    <div class="content">
-        <h1>53-Ralong Namlung eGPK</h1>
-        <p>Welcome, {{ username }},this is the homepage under construction for 53-Ralong Namlung eGPK!</p>
+    <div class="home-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="eGPK Logo" class="egpk-logo">
+        </div>
+    
+        <!-- Welcome Section -->
+        <h1>Welcome to 53-Ralong Namlung eGPK</h1>
+        <p class="tagline">Empowering Citizens. Enhancing Governance.</p>
+    
+        <div class="intro-section">
+            <p>
+                The <strong>e-Grievance and Public Karya Portal (eGPK)</strong> for 53-Ralong Namlung constituency is your one-stop platform for voicing concerns, submitting public grievances, and staying informed about ongoing development works.
+            </p>
+            <p>
+                Our goal is to foster transparency, accountability, and participatory governance by enabling real-time grievance tracking, prompt redressal, and easy access to local projects and initiatives.
+            </p>
+        </div>
+    
+        <!-- Features -->
+        <div class="features-section">
+            <h2>What You Can Do</h2>
+            <ul>
+                <li>📝 Submit and track grievances easily</li>
+                <li>📊 View updates on public works (Karya) in your area</li>
+                <li>🤝 Connect with local authorities and representatives</li>
+                <li>🔒 Access your profile and history securely</li>
+            </ul>
+        </div>
+    
+        <!-- CTA Buttons -->
+        <div class="cta-section">
+            <a href="{{ url_for('grievances') }}" class="cta-button">Submit a Grievance</a>
+            <a href="{{ url_for('about') }}" class="cta-button">Learn More</a>
+        </div>
     </div>
+    
 
     <!-- Back to Home Button -->
     <div class="center-button-container">

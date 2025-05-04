@@ -1,37 +1,68 @@
-<!-- templates/signup.html -->
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGPK | Sign Up</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<form method="POST">
-    <label>First Name:</label>
-    <input type="text" name="first_name" required><br>
-  
-    <label>Last Name:</label>
-    <input type="text" name="last_name" required><br>
-  
-    <label>Phone Number:</label>
-    <input type="tel" name="phone_number" required><br>
-  
-    <label>Email Address:</label>
-    <input type="email" name="email" required><br>
-  
-    <label>Username:</label>
-    <input type="text" name="username" required><br>
-  
-    <label>Password:</label>
-    <input type="password" name="password" required><br>
-  
-    <label>Job Role:</label>
-    <select name="job_role" required>
-      <option value="">Select a role</option>
-      <option value="Admin">Admin</option>
-      <option value="Manager">Manager</option>
-      <option value="Staff">Staff</option>
-      <option value="Technician">Technician</option>
-    </select><br>
-  
-    <button type="submit">Sign Up</button>
-  </form>
-  
+<body>
+    <div class="navbar">
+        <div class="logo">eGPK</div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/login">Login</a>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h1>Sign Up<br>
+        to<br>
+      eGPK</h1>
+        <form class="form-box" method="POST">
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" id="first_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" id="last_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number">Phone Number:</label>
+                <input type="tel" name="phone_number" id="phone_number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+
+
+            <button type="submit" class="update-btn">Sign Up</button>
+        </form>
+    </div>
+
+    <div class="center-button-container">
+        <a href="/" class="back-home-btn">Back to Home</a>
+    </div>
+</body>
+</html>

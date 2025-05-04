@@ -13,22 +13,12 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">
-        <div class="logo">eGPK</div>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        <div class="nav-links" id="navLinks">
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('grievances') }}">Grievances</a>
-            <a href="{{ url_for('about') }}">About</a>
-            <a href="{{ url_for('profile') }}">Profile</a>
-            <a href="{{ url_for('logout') }}">Logout</a>
-        </div>
-    </div>
-
     <!-- Login Form Container -->
     <div class="form-container">
-        <h1>Login</h1>
+        <h1>Login to eGPK.
+            <br>
+            Your Voice, Our Action.
+        </h1>
 
         {% if error %}
         <div class="alert-box">

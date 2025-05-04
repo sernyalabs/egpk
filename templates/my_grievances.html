@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Grievances - eGPK</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .grievance-description {
+            display: none;
+            margin-top: 8px;
+        }
+
+        .grievance-item {
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+
+        .grievance-item.open .grievance-description {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar">
@@ -23,12 +42,14 @@
         <h1>My Grievances</h1>
 
         {% if grievances %}
-            <ul>
+            <ul class="grievance-list">
                 {% for grievance in grievances %}
-                    <li>
+                    <li class="grievance-item" onclick="this.classList.toggle('open')">
                         <strong>{{ grievance.title }}</strong><br>
-                        <p>{{ grievance.description }}</p>
-                        <p>Status: {{ grievance.status }}</p>
+                        <span>Status: {{ grievance.status }}</span>
+                        <div class="grievance-description">
+                            <p>{{ grievance.description }}</p>
+                        </div>
                     </li>
                 {% endfor %}
             </ul>
@@ -39,16 +60,13 @@
         <div class="center-button-container" style="margin-top: 30px;">
             <a href="{{ url_for('new_grievance') }}" class="update-btn">Submit New Grievance</a>
         </div>
-    </div>
 
-                <!-- Back to Home Button -->
-                <div class="center-button-container">
-                    <form action="{{ url_for('home') }}" method="get">
-                        <button type="submit" class="back-home-btn">Back to Home</button>
-                    </form>
-                </div>
-            </div>
+        <div class="center-button-container">
+            <form action="{{ url_for('home') }}" method="get">
+                <button type="submit" class="back-home-btn">Back to Home</button>
+            </form>
         </div>
+    </div>
 
     <script>
         function toggleMenu() {
