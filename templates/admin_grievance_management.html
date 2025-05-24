@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin Grievance Management - eGPK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fonts and CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        <a href="{{ url_for('admin_panel') }}" class="logo-head">eGPK-Admin</a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+        <a href="{{ url_for('admin_panel') }}">Home</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+
+<!-- Flash Messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="flash-messages" id="flashMessages">
+    {% for category, message in messages %}
+    <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+<!-- Grievances List -->
+<div class="form-container">
+    <h1><u>Grievance Management</u></h1>
+
+    {% for g in grievances %}
+    <div class="grievance-card">
+        <div class="grievance-header" onclick="toggleGrievance('grievance-{{ g.id }}')">
+            <strong>{{ g.title }}</strong> <span style="float: right;">▼</span>
+        </div>
+
+        <div class="grievance-body" id="grievance-{{ g.id }}" style="display: none;">
+            <p><strong>Description:</strong> {{ g.description }}</p>
+            <p><strong>Status:</strong> {{ g.status }}</p>
+            <p><strong>User:</strong> {{ g.username }}</p>
+            <p><strong>Submitted:</strong> {{ g.timestampz }}</p>
+
+            <form action="{{ url_for('reply_grievance', grievance_id=g.id) }}" method="POST">
+                <textarea name="reply" placeholder="Write a reply..." required></textarea>
+                <select name="status">
+                    <option value="Pending" {% if g.status == "Pending" %}selected{% endif %}>Pending</option>
+                    <option value="In Progress" {% if g.status == "In Progress" %}selected{% endif %}>In Progress</option>
+                    <option value="Addressed" {% if g.status == "Addressed" %}selected{% endif %}>Addressed</option>
+                </select>
+                <button type="submit">Send Reply</button>
+            </form>
+
+            <!-- Hidden Delete Form -->
+            <form id="delete-form-{{ g.id }}" action="{{ url_for('delete_grievance', grievance_id=g.id) }}" method="POST" style="display:none;"></form>
+
+            <!-- Delete Button -->
+            <button class="delete-button" onclick="showDeleteConfirm({{ g.id }})" style="margin-top: 10px;">Delete Grievance</button>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Back to Home -->
+<div class="center-button-container" style="margin-top: 20px;">
+    <form action="{{ url_for('admin_panel') }}" method="get">
+        <button type="submit" class="back-home-btn">Back to Home</button>
+    </form>
+</div>
+
+<!-- Scripts -->
+<script>
+    // Navbar toggle
+    function toggleMenu() {
+        var nav = document.getElementById('navLinks');
+        nav.classList.toggle('show');
+    }
+
+    // Toggle grievance body collapse
+    function toggleGrievance(id) {
+        const elem = document.getElementById(id);
+        elem.style.display = elem.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Delete confirmation popup
+    function showDeleteConfirm(grievanceId) {
+        const confirmBox = document.createElement('div');
+        confirmBox.classList.add('confirm-overlay');
+        confirmBox.innerHTML = `
+            <div class="confirm-box">
+                <p>Are you sure you want to delete this grievance?</p>
+                <div class="confirm-actions">
+                    <button class="confirm-yes">Yes</button>
+                    <button class="confirm-no">Cancel</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(confirmBox);
+
+        confirmBox.querySelector('.confirm-yes').onclick = () => {
+            document.getElementById(`delete-form-${grievanceId}`).submit();
+            document.body.removeChild(confirmBox);
+        };
+
+        confirmBox.querySelector('.confirm-no').onclick = () => {
+            document.body.removeChild(confirmBox);
+        };
+    }
+
+    // Flash message fade out
+    setTimeout(() => {
+        const flashMessages = document.querySelectorAll('.flash-messages .flash');
+        flashMessages.forEach(flash => {
+            flash.style.opacity = '0';
+            setTimeout(() => flash.remove(), 500);
+        });
+    }, 3500);
+</script>
+
+</body>
+</html>

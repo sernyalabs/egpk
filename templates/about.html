@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - eGPK</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-
     <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">eGPK</div>
+        <div class="logo">
+            <a href="{{ url_for('home') }}" class="logo-head">eGPK</a>
+        </div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <div class="nav-links" id="navLinks">
             <a href="{{ url_for('home') }}">Home</a>
@@ -47,9 +50,10 @@
         </div>
     </div>
 
-    <!-- Back Button -->
     <div class="center-button-container">
-        <a href="{{ url_for('home') }}" class="back-home-btn">Back to Home</a>
+        <form action="{{ url_for('home') }}" method="get">
+            <button type="submit">Back to Home</button>
+        </form>
     </div>
 
     <!-- Toggle Script -->

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - eGPK</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        <a href="{{ url_for('admin_panel') }}" class="logo-head">eGPK-Admin</a>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+        <a href="{{ url_for('admin_panel') }}">Home</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</div>
+
+<!-- Logo Section -->
+<div class="logo-section">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="eGPK Logo" class="egpk-logo">
+</div>
+
+<!-- Inbox Section -->
+<div class="form-container">
+    <h1>Inbox</h1>
+    {% if messages %}
+        <div class="inbox-list">
+            {% for msg in messages %}
+                <div class="inbox-message" onclick="toggleMessage('msg{{ loop.index }}')" style="cursor: pointer;">
+                    <strong>From:</strong> {{ msg.sender_username }}
+                    <div id="msg{{ loop.index }}" class="message-details" style="display: none; margin-top: 10px;">
+                        <strong>Message:</strong> {{ msg.message }}<br>
+                        <small><strong>Time:</strong> {{ msg.timestampz }}</small>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No messages found.</p>
+    {% endif %}
+</div>
+
+    <!-- Back to Home Button -->
+    <div class="center-button-container">
+        <form action="{{ url_for('home') }}" method="get">
+            <button type="submit" class="back-home-btn">Back to Home</button>
+        </form>
+    </div>
+
+<!-- Scripts -->
+<script>
+    function toggleMenu() {
+        var nav = document.getElementById('navLinks');
+        nav.classList.toggle('show');
+    }
+
+    function toggleMessage(id) {
+        const element = document.getElementById(id);
+        element.style.display = element.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
+</body>
+</html>

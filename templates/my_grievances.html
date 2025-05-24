@@ -5,29 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Grievances - eGPK</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <style>
-        .grievance-description {
-            display: none;
-            margin-top: 8px;
-        }
-
-        .grievance-item {
-            cursor: pointer;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 10px;
-            margin: 10px 0;
-            background-color: #f9f9f9;
-        }
-
-        .grievance-item.open .grievance-description {
-            display: block;
-        }
-    </style>
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">eGPK</div>
+        <div class="logo">
+            <a href="{{ url_for('home') }}" class="logo-head">eGPK</a>
+        </div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <div class="nav-links" id="navLinks">
             <a href="{{ url_for('home') }}">Home</a>
@@ -60,7 +43,7 @@
 
         <div class="center-button-container">
             <form action="{{ url_for('home') }}" method="get">
-                <button type="submit" class="back-home-btn">Back to Home</button>
+                <button type="submit">Back to Home</button>
             </form>
         </div>
     </div>

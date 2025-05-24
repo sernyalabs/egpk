@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>User Inbox - eGPK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Lobster&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('home') }}" class="logo-head">eGPK</a>
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('grievances') }}">Grievances</a>
+            <a href="{{ url_for('user_inbox') }}">Inbox</a>
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <!-- Logo Section -->
+    <div class="logo-section">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="eGPK Logo" class="egpk-logo" />
+    </div>
+
+    <!-- Inbox Container -->
+    <div class="form-container">
+        <h1><u>Your Inbox</u></h1>
+
+        {% if messages %}
+            <table class="grievance-table">
+                <thead>
+                    <tr>
+                        <th>From</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Received At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for msg in messages %}
+                        <tr>
+                            <td data-label="From">{{ msg.sender_username }}</td>
+                            <td data-label="Subject">{{ msg.subject }}</td>
+                            <td data-label="Message">{{ msg.message }}</td>
+                            <td data-label="Received At">{{ msg.timestampz }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No messages found in your inbox.</p>
+        {% endif %}
+    </div>
+
+    <!-- Back to Home Button -->
+    <div class="center-button-container">
+        <form action="{{ url_for('home') }}" method="get">
+            <button type="submit" class="back-home-btn">Back to Home</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile - 53-Ralong Namlung eGPK</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-
     <!-- Navbar -->
     <div class="navbar">
-        <div class="logo">eGPK</div>
+        <div class="logo">
+            <a href="{{ url_for('home') }}" class="logo-head">eGPK</a>
+        </div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <div class="nav-links" id="navLinks">
             <a href="{{ url_for('home') }}">Home</a>
@@ -70,7 +73,7 @@
 
                     <!-- Submit Button -->
                     <div class="center-button-container" style="margin-top: 30px;">
-                    <button type="submit" class="update-btn">Update Profile</button>
+                    <button type="submit">Update Profile</button>
                     </div>
                 </div>
             </form>
@@ -78,7 +81,7 @@
             <!-- Back to Home Button -->
             <div class="center-button-container">
                 <form action="{{ url_for('home') }}" method="get">
-                    <button type="submit" class="back-home-btn">Back to Home</button>
+                    <button type="submit">Back to Home</button>
                 </form>
             </div>
         </div>

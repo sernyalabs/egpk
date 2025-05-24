@@ -9,7 +9,7 @@ body {
 
 h1 {
     font-family: "Cal Sans", sans-serif;
-    font-weight: 400;
+    font-weight: bold;
     text-align: center;
     margin-top: 40px;
     font-size: 36px;
@@ -17,12 +17,10 @@ h1 {
 
 a {
     text-decoration: none;
-    color: #3498db;
+    color: #000000;
 }
 
-a:hover {
-    color: #1abc9c;
-}
+
 
 /* === ALERTS === */
 .alert-box {
@@ -52,15 +50,17 @@ a:hover {
     flex-wrap: wrap;
 }
 
-.navbar .logo {
+.navbar .logo-head {
     font-family: "Cal Sans", sans-serif;
     font-size: 24px;
     font-weight: bold;
+    color: white;
 }
 
 .nav-links {
     display: flex;
     gap: 15px;
+    font-weight: bold;
 }
 
 .nav-links a {
@@ -69,6 +69,7 @@ a:hover {
     padding: 8px 12px;
     border-radius: 5px;
     transition: background-color 0.3s;
+    font-weight: bold;
 }
 
 .nav-links a:hover {
@@ -111,9 +112,7 @@ a:hover {
         flex-basis: 100%;
     }
 
-    .back-home-btn {
-        font-size: 16px;
-    }
+
 }
 
 /* === ABOUT PAGE === */
@@ -194,24 +193,7 @@ a:hover {
     height: 10vh;
 }
 
-/* === BACK BUTTON (Reusable) === */
-.back-home-btn {
-    background-color: #1abc9c;
-    color: white;
-    padding: 14px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.back-home-btn:hover {
-    background-color: #16a085;
-}
 
 /* === PROFILE FORM === */
 .profile-container {
@@ -253,6 +235,23 @@ a:hover {
 
 
 /* === GRIEVANCE FORM === */
+.grievance-description {
+    display: none;
+    margin-top: 8px;
+}
+
+.grievance-item {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+
+.grievance-item.open .grievance-description {
+    display: block;
+}
 .form-container {
     max-width: 500px;
     margin: 50px auto;
@@ -272,32 +271,57 @@ a:hover {
 .form-box {
     display: flex;
     flex-direction: column;
-    gap: 50px;
-}
+    gap: 20px;
+    max-width: 300px;
+    margin: 50px auto;
+  }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+  }
 
 .form-group label {
+    margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
-}
+  }
 
-.form-group input {
+.form-control {
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+.title-textarea {
     width: 100%;
+    min-height: 40px;
     padding: 10px;
     font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    resize: none;         /* User can't manually resize */
+    overflow: hidden;     /* Prevent scrollbar from appearing */
     box-sizing: border-box;
-}
+  }
+
+.description-textarea {
+    width: 100%;
+    min-height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    resize: none;         /* User can't manually resize */
+    overflow: hidden;     /* Prevent scrollbar from appearing */
+    box-sizing: border-box;
+  }
+  
 
 .update-btn {
     background-color: #3498db;
     color: white;
     padding: 14px 30px;  /* Adequate padding for spacing */
     font-size: 18px;
-    border: none;
+    border: 2px black;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
     width: auto;          /* Let width be dynamic */
     min-width: 180px;     /* Optional: prevents too small buttons */
     white-space: nowrap;  /* Keeps the text on one line */
@@ -305,34 +329,52 @@ a:hover {
 }
 
 
-.update-btn:hover {
-    background-color: #2980b9;
-}
+
 
 /* === GRIEVANCE BUTTONS === */
 .grievance-buttons {
     display: flex;
+    border: 2px black;
+    flex-direction: column; /* Stack vertically */
+    gap: 10px;              /* Space between buttons */
+    align-items: center;
     justify-content: center;
     gap: 20px;
-    margin-top: 40px;
+    margin-top: 100px;
+    margin-bottom: 150px;
 }
 
-.action-btn {
-    background-color: #3498db;
-    color: white;
-    padding: 14px 30px;
-    border-radius: 5px;
-    font-size: 18px;
+
+.btn-grievances {
+    padding: 2.3em 10em;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-}
-
-.action-btn:hover {
-    background-color: #2980b9;
-}
+    outline: none;
+  }
+  
+  .btn-grievances:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .btn-grievances:active {
+    transform: translateY(-1px);
+  }
+  
+  .btn-grievances:active {
+    transform: translateY(-1px);
+  }
 .grievance-item {
     padding: 15px;
     border: 1px solid #ccc;
@@ -371,3 +413,433 @@ a:hover {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     display: block;
 }
+button {
+    padding: 17px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 2px solid black;       /* Black border */
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+  }
+  
+  button:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+  }
+  
+  button:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+  }
+
+  .admin-buttons {
+    display: flex;
+    justify-content: space-between;  /* left, center, right */
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 10px;
+  }
+  
+  /* Responsive: stack vertically and center on small screens */
+  @media (max-width: 600px) {
+    .admin-buttons {
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;   /* center items horizontally when stacked */
+    }
+  }
+  
+
+.dashboard-item {
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Base styles for the user table */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-table th, .user-table td {
+    padding: 12px 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  /* Responsive behavior */
+  @media (max-width: 768px) {
+    /* Stack rows vertically on small screens */
+    .user-table thead {
+      display: none;
+    }
+  
+    .user-table, .user-table tbody, .user-table tr, .user-table td {
+      display: block;
+      width: 100%;
+    }
+  
+    .user-table tr {
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ccc;
+    }
+  
+    .user-table td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+  
+    .user-table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 15px;
+      width: 45%;
+      padding-left: 10px;
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+  
+  /* Flash Messages */
+.flash {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Visually Hidden (for accessibility) */
+.visually-hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .account-management-table thead {
+        display: none;
+    }
+
+    .account-management-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    .account-management-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+        border: none;
+        width: 100%;
+    }
+
+    .account-management-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+    }
+}
+
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.confirm-box {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.confirm-box p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.confirm-actions button {
+    padding: 8px 16px;
+    margin: 0 10px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.confirm-yes {
+    background-color: #007bff;
+    color: white;
+}
+
+.confirm-no {
+    background-color: #ccc;
+    color: #333;
+}
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+.confirm-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+.confirm-box {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    max-width: 320px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+.confirm-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.confirm-actions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.confirm-yes {
+    background-color: #4caf50;
+    color: white;
+}
+.confirm-no {
+    background-color: #f44336;
+    color: white;
+}
+
+.flash-messages {
+    margin-bottom: 15px;
+}
+.flash {
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.delete-btn {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+    background-color: #c62828;
+}
+
+.delete-button {
+    background-color: #e74c3c;  /* red color */
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;  /* darker red on hover */
+}
+/* Flash messages */
+.flash-messages {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.flash {
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #fff;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.flash.success {
+    background-color: #4caf50;
+}
+
+.flash.error {
+    background-color: #f44336;
+}
+
+/* Confirm dialog overlay */
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.confirm-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.confirm-actions button {
+    margin: 10px 15px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.confirm-yes {
+    background-color: #4caf50;
+    color: white;
+}
+
+.confirm-no {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Grievance cards */
+.grievance-card {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.grievance-header {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.grievance-body {
+    margin-top: 10px;
+}
+
+.delete-button {
+    background-color: #f44336;
+    border: none;
+    padding: 8px 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-home-btn {
+    background-color: #2196f3;
+    border: none;
+    padding: 10px 25px;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+    padding: 8px;
+    resize: vertical;
+    font-size: 1rem;
+}
+
+select {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
