@@ -416,6 +416,7 @@ a {
 button {
     padding: 17px 40px;
     border-radius: 50px;
+    color: black;
     cursor: pointer;
     border: 2px solid black;       /* Black border */
     background-color: white;
